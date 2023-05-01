@@ -3,7 +3,7 @@
 Servo myservo;
 int angle = 0;
 // int ledpin = 3;
-const int buttonPin = 2; 
+const int buttonPin = 7; 
 const int servo = 9; 
 int buttonState = 0;
 String val;
@@ -23,15 +23,9 @@ void setup() {
 }
 
 void loop() {
-  int sensorValue = analogRead(A0);
-  float voltage = sensorValue * (5.0 / 1024.0);
-  Serial.println ("Sensor Output (V):");
-  Serial.println (sensorValue);
-  Serial.println();
-  delay(500);
 
   currentMillis = millis();  
-  if (currentMillis - startMillis >= 60000)  
+  if (currentMillis - startMillis >= period)  
   {  
     for(int i=0;i<18;i++){
       myservo.write(i*10);
